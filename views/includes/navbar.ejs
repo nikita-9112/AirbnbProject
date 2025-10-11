@@ -1,0 +1,54 @@
+
+<style>
+  .search-bar{
+    margin: auto;
+  }
+  .search-inp{
+    padding: 0.5rem 5rem;
+    border-radius: 1rem;
+    opacity: 0.8;
+  }
+  .search-btn{
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listing"><i class="fa-solid fa-compass logo"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listing">Explore</a>
+      </div>
+
+      <div class="search-bar ">
+        <nav class="navbar bg-body-tertiary">
+          <div class="container-fluid">
+            <form class="d-flex" role="search" method="get" action="/listing/search">
+              <input class="form-control me-2 search-inp flex-grow-1 " type="text" name="q" placeholder="Search destination" />
+              <button class="btn btn-outline-danger search-btn" type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i> &nbsp;</button>
+            </form>
+          </div>
+        </nav>
+      </div>
+      
+
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/listing/new">Airbnb your home</a>
+       <% if(!currentUser){%>
+          <a class="nav-link active" aria-current="page" href="/signUp">Sign Up</a>
+          <a class="nav-link" href="/login"><b>Login</b></a>
+       <% }%>
+       <% if(currentUser){%>
+        <a class="nav-link" href="/logout">Logout</a>
+        <% }%>
+      </div>
+    </div>
+  </div>
+</nav>

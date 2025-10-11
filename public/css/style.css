@@ -1,0 +1,95 @@
+
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.logo{
+  color:red;
+}
+.container{
+  flex-grow: 1;
+}
+
+.footer{
+  background-color: black;
+  width: 100%;
+ color: white;
+ display: flex;
+ text-align: center;
+ align-items: center;
+ justify-content: center;
+}
+.footer-link a{
+  text-decoration: none; 
+}
+.footer-link a:hover{
+  color: red;
+  font-size: large;
+}
+
+/* cards */
+.row{
+  display: flex;
+  justify-content: space-evenly;
+}
+.card{
+
+  border: none;
+  margin-bottom: 2rem;
+  min-width: 200px;
+  max-width: 300px;
+}
+.card a {
+  text-decoration: none;
+  color: black;
+}
+.card-img-top{
+  border-radius:1rem;
+  width: 100%;
+  object-fit: cover;
+  height: 20rem;
+}
+.card-body{
+  padding: none;
+}
+.card-text{
+  font-weight: 400;
+
+}
+.listing-link{
+  text-decoration: none;
+
+}
+/* card effect */
+.card-img-overlay{
+  opacity: 0;
+  border-radius: 0.5rem;
+  
+ 
+}
+.card-img-overlay:hover{
+  opacity: .2;
+  background-color: rgba(229, 226, 226, 0.683);
+}
+/* show page */
+.show-img{
+  height: 30vh;
+}
+.btns{
+  display: flex !important;
+}
+
+/* trending icons on top styling  */
+
+.filters{
+  margin-top: 1rem;
+  display: flex !important;
+  flex-wrap: wrap;
+}
+.filter{
+ margin-right: 2rem;
+ margin-top: 2rem;
+ text-align: center;
+ opacity: 0.7;
+}
