@@ -5,10 +5,10 @@
 <div class="col-10 offset-2">
 
   <h2> <b><%= idInfo.title %></b></h2>
-  <div class="card">
-    <div>
+  <div class="col-md-8 offset-2">
+    <div >
 
-    <img src="<%= idInfo.image.url%>" alt="listing image" class="card-img-top show-img ">
+    <img src="<%= idInfo.image.url%>" alt="listing image" class="card-img-top show-img " style="height: 50vh;">
   </div>
 
     <div class="card-body">
@@ -32,7 +32,7 @@
 
  <!-- .toLocalString("en-in") -->
  <% if (currentUser && currentUser._id.equals(idInfo.owner._id)){%>
-  <div>
+  <div class="col-md-8 offset-2">
     <form action="/listing/<%=idInfo._id%>/edit">
       <button class="btn btn-dark mt-3">Edit</button>
     </form>
@@ -48,15 +48,15 @@
 </div>
 <hr>
 <% if(currentUser){%>
-<div class="col-8 offset-2">
-<h4>Leave a Review</h4>
-<form method="post"  action="/listing/<%=idInfo._id%>/review" class="mb-3"  novalidate class="needs-validation">
+<div class="col-10 offset-2">
+  <h4>Leave a Review</h4>
+  <form method="post"  action="/listing/      <%=idInfo._id%>/review" class="mb-3 col-md-8 offset-2"  novalidate class="needs-validation">
   <!-- <div class="mb-3 mt-3">
     <label for="rating" class="form-label">Rating: </label>
     <input type="range"min="1" max="5" name="review[rating]" id="rating" class="form-range">
   </div> -->
 
-  <fieldset class="starability-slot">
+  <fieldset class="starability-slot ">
     <legend>First rating:</legend>
     <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="0" checked aria-label="No rating." />
     <input type="radio" id="first-rate1" name="review[rating]" value="1" />
@@ -85,19 +85,20 @@
 </form>
 <hr>
 <%}%>
+</div>
 
-<div class="col-8 offset-2">
+<div class="col-10 offset-2">
 <% if(idInfo.reviews.length > 0){%> 
 <h4>All Reviews</h4>
-<div class="row">
+<div class="row col-md-8 offset-2">
 <%for(review of idInfo.reviews){%>
-  <div class="card mb-3 col-5 ms-3">
+  <div class="card mb-1" style="height: 7%; width:10% ;">
     <div class="card-body">
       <h5 class="card-title"><%=review.auther?.username || "unknown user" %></h5>
       <p class="starability-result" data-rating=<%=review.rating%>></p>
       <p class="card-text"><%=review.comment%></p>
-    
     </div>
+
     <form method="post" action="/listing/<%=idInfo._id%>/review/<%=review._id%>?_method=DELETE">
       <button class="btn btn-sm btn-dark mb-3">Delete</button>
     </form>
@@ -107,9 +108,9 @@
 <%}%>
 </div>
 
-<div class="col-8 offset-2">
-  <h5>Location:</h5>
-<div id="map" style="height: 50vh; width: 100vb;"></div><br>
+<div class="col-10 offset-2">
+  <h4>Location:</h4>
+<div id="map"  class="col-sm-10 col-md-8 offset-2"  style="height: 50vh; "></div><br>
 </div>
 
 </body>
