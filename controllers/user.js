@@ -6,11 +6,21 @@ module.exports.signUpForm = (req,res)=>{
 module.exports.signUpDone = async (req,res)=>{
   try{
     let {username,email,password}= req.body;
-    console.log(req.body);
+    // check for the given username or email is already register or not.
+    const existUser= await user.findOne({$or: [{email},{username}]});
+    if(existUser){
+      if(existUser.email === email){
+        req.flash("error","This email is already taken !");
+      }else{
+        req.flash("error","This username is already taken !");
+      }
+      return res.redirect("/signup")
+    }
+  
     const newUser = new user({email,username});
-    console.log(newUser);
+   
     const regUser= await user.register(newUser,password);
-    console.log(regUser);
+  
     req.login(regUser,(err)=>{
       if(err){
         return next(err);
