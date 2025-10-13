@@ -7,11 +7,25 @@ module.exports.index =  async (req,res)=>{
 
 module.exports.searchListings = async(req,res)=>{
   let search = req.query.q;
-  console.log(search);
+  // spliting multiple keywords 
+  const keywords = search.split(" ").filter((k)=> k.trim()!="");
+  
   let fields = ["title","description","country","location"];
-  let orCondition = fields.map(field=>({
-    [field]:{$regex:search,$options:'i'}
-  }));
+  let orCondition =[];
+
+  // check for the field accounding to the each keyword.
+  keywords.forEach(
+    (word)=>{
+      fields.forEach(
+        (field)=>{
+          orCondition.push({
+            [field]:{$regex:word, $options:"i"}
+          });
+        }
+      );
+    }
+  );
+
   let numFields=["price"];
 
   // for number field.

@@ -35,48 +35,48 @@
 
   <!-- <h2>All listings</h2> -->
   <div class="filters">
-    <div class="filter">
+    <div class="filter" onclick="searchKey('home river hotel forest villa hills')">
       <div><i class="fa-solid fa-fire"></i></div>
      <p>Trending</p> 
     </div>
-    <div class="filter">
+    <div class="filter" onclick="searchKey('rooms home hostels hotel villa apartment')">
       <div><i class="fa-solid fa-bed"></i></div>
      <p>Rooms</p> 
     </div>
-    <div class="filter">
+    <div class="filter" onclick="searchKey('iconic cities new york')">
       <div><i class="fa-solid fa-mountain-sun"></i></div>
      <p>iconic cities</p> 
     </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-castle"></i></div>
+    <div class="filter" onclick="searchKey('castles palace fort ')">
+      <div><i class="fa-brands fa-fort-awesome"></i></div>
      <p>Castles</p> 
     </div>
-    <div class="filter">
+    <div class="filter" onclick="searchKey('pool ')">
       <div><i class="fa-solid fa-person-swimming"></i></div>
      <p>Amazing Pool</p> 
     </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-campfire"></i></div>
+    <div class="filter" onclick="searchKey('camp mountain hills ')">
+      <div><i class="fa-solid fa-tents"></i></div>
      <p>Camping</p> 
     </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-scarecrow"></i></div>
+    <div class="filter" onclick="searchKey('farm')">
+      <div><i class="fa-solid fa-tractor"></i></div>
      <p>Farms</p> 
     </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-snowman-head"></i></div>
+    <div class="filter" onclick="searchKey('snow agtice ice')">
+      <div><i class="fa-solid fa-snowman"></i></div>
      <p>Agtice</p> 
     </div>
-    <div class="filter">
+    <div class="filter" onclick="searchKey('water river waterfall')">
       <div><i class="fa-solid fa-sailboat"></i></div>
      <p>Boats</p> 
     </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-monkey"></i></div>
+    <div class="filter" onclick="searchKey('animal wildlife forest nature river park')">
+      <div><i class="fa-solid fa-paw"></i></div>
      <p>wildlife</p> 
     </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-fort"></i></div>
+    <div class="filter" onclick="searchKey('curch tample fort palace')">
+      <div><i class="fa-solid fa-place-of-worship"></i></div>
      <p>Historic</p> 
     </div>
     <div class="toggle-switch">
@@ -127,4 +127,9 @@
     }
    }
   })
+  
+  // for the icons to give result accounding to it defination
+  function searchKey(keyword){
+    window.location.href= `/listing/search?q=${encodeURIComponent(keyword)}`;
+  }
 </script>
