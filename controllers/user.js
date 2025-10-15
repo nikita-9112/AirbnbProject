@@ -16,7 +16,13 @@ module.exports.signUpDone = async (req,res)=>{
       }
       return res.redirect("/signup")
     }
-  
+  //  for strong password which contain a-z 0-9 and special symbols
+    const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\=-\[\]{}:;'"\\,.<>\/?]).{8,}$/;
+    if(!passRegex.test(password)){
+      req.flash("error","Password must be at least 8 characters long and include [a-z][A-Z][0-9][!@#$%^&.,]");
+      return res.redirect("/signup");
+    }
+    //creation of new user.
     const newUser = new user({email,username});
    
     const regUser= await user.register(newUser,password);
