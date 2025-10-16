@@ -18,9 +18,27 @@
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">PASSWORD:</label>
-        <input type="password" name="password" placeholder=" Enter your password" id="password" class="form-control" required>
+        <input type="password" name="password" placeholder=" Enter your password" id="password" class="form-control" required
+        minlength="8">
+        <span id="togglepass" style="cursor: pointer;" >🙈</span>
       </div>
       <BUtton class="btn btn-success mb-3">Sign Up</BUtton>
     </form>
   </div>
 </div>
+<!-- script to add visiablity for the password -->
+<script>
+  const pass = document.getElementById("password");
+  const toggle = document.getElementById("togglepass");
+
+  toggle.addEventListener("click",function (){
+    if(pass.type ==="password"){
+      pass.type = "text";
+      toggle.textContent="👁️";
+    }
+    else{
+      pass.type="password";
+      toggle.textContent="🙈";
+    }
+  });
+</script>
