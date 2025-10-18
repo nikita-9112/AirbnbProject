@@ -13,8 +13,10 @@ const userSchema = new Schema ({
     type:String,
     require:true,
     unique:true,
-  }
-
+  },
+  wishList:[{
+    type:mongoose.Schema.Types.ObjectId,ref:"listing"
+  }]
 });
 userSchema.plugin(passportLocalMongoose);
 

@@ -45,19 +45,19 @@ main()
 .catch((err)=>{console.log(err);})
 
   async function main(params) {
-    await mongoose.connect(db_url);
+    await mongoose.connect("mongodb://127.0.0.1:27017/wonder");
 
   
 }
-const store = MongoStore.create({
-  mongoUrl: db_url,
-  crypto:{
-    secret: process.env.SECRET,
-  },
-  touchAfter : 24*3600 , //in is given in seconds . it store the authantication information for that time.
-});
+// const store = MongoStore.create({
+//   mongoUrl: db_url,
+//   crypto:{
+//     secret: process.env.SECRET,
+//   },
+//   touchAfter : 24*3600 , //in is given in seconds . it store the authantication information for that time.
+// });
 const sessionOptions = {
-  store:store,
+  // store:store,
   secret:process.env.SECRET,
   resave:false,
   saveUninitialized: true,
@@ -67,9 +67,9 @@ const sessionOptions = {
     httpOnly:true
   }
 }
-store.on("error", ()=>{
-  console.log("Error in mongo session store",error);
-})
+// store.on("error", ()=>{
+//   console.log("Error in mongo session store",error);
+// })
 
 app.use(session(sessionOptions));
 app.use(flash());

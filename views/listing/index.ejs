@@ -95,6 +95,7 @@
         <div class="card-img-overlay"></div>
       
         <img src="<%= listing.image.url%>" class="card-img-top" alt="<%= listing.title %>">
+        <button class="wishList-btn" title="Add to wishList" onclick="toggleFA('<%=listing._id%>')"><i class="fa-regular fa-heart"></i></button>
         <div class="card-body">
          <b>
           <p class="card-text"><b><%= listing.title %></b></p>
@@ -104,7 +105,6 @@
             <i class="taxInfo"> &nbsp; &nbsp;18% GST</i>
           </p>
           <!-- price.toLocaleString("en-IN") -->
-         
         </div>
 
       </a> 
@@ -132,4 +132,25 @@
   function searchKey(keyword){
     window.location.href= `/listing/search?q=${encodeURIComponent(keyword)}`;
   }
+
+  // wishlisting the listing 
+    async function toggleFA(btn,listingId){
+      event.stopPropagation();
+      event.preventDefault();
+
+    const response= await fetch(`/wishlist/${listingId}`,{method:"post"});
+    
+    const result = await response.json; // it give use that listing is added or removed.
+
+    const button = document.querySelector(btn);
+    const icon = btn.querySelector('i');
+    if(result.added){
+      icon.classList.remove('fa-solid');
+      icon.classList.add('fa-regular');
+    }
+    else{
+      icon.classList.remove('fa-regular');
+      icon.classList.add('fa-solid');
+    }
+   }
 </script>

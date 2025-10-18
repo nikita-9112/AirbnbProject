@@ -38,7 +38,7 @@ module.exports.searchListings = async(req,res)=>{
 
  try{
   let allListings = await listing.find({$or:orCondition});
-  console.log(allListings);
+  // console.log(allListings);
   res.render("./listing/index.ejs",{allListings});
  }
  catch (err){
