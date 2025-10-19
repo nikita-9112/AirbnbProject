@@ -22,5 +22,5 @@ module.exports.wishListAdd = async(req,res)=>{
   }
 
   await user.save();
-  res.json({added})
+  res.json({added});
 }

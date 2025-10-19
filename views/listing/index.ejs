@@ -95,20 +95,17 @@
         <div class="card-img-overlay"></div>
       
         <img src="<%= listing.image.url%>" class="card-img-top" alt="<%= listing.title %>">
-        <button class="wishList-btn" title="Add to wishList" onclick="toggleFA('<%=listing._id%>')"><i class="fa-regular fa-heart"></i></button>
+        
         <div class="card-body">
-         <b>
-          <p class="card-text"><b><%= listing.title %></b></p>
-         </b> 
+         <b><p class="card-text"><b><%= listing.title %></b></p></b> 
          
           <p class="card-text">&#8377;<%= listing.price %>/night
             <i class="taxInfo"> &nbsp; &nbsp;18% GST</i>
           </p>
           <!-- price.toLocaleString("en-IN") -->
         </div>
-
       </a> 
-      
+      <button class="wishList-btn" title="Add to wishList" onclick="toggleFA(this,'<%=listing._id%>',event)" type="button"><i class="fa-regular fa-heart"></i></button>
     </div>
     <% }%>
 </div>
@@ -134,16 +131,20 @@
   }
 
   // wishlisting the listing 
-    async function toggleFA(btn,listingId){
-      event.stopPropagation();
+    async function toggleFA(btn,listingId,event){
       event.preventDefault();
+      event.stopPropagation();
+     console.log("clicked");
 
-    const response= await fetch(`/wishlist/${listingId}`,{method:"post"});
+    const response= await fetch(`/listing/wishlist/${listingId}`,{method:"post"});
     
-    const result = await response.json; // it give use that listing is added or removed.
+    let result ;
+    try{
+      result =  response.json(); // it give use that listing is added or removed.
 
-    const button = document.querySelector(btn);
+    // const button = document.querySelector(`[onclick="toggleFA('${listingId}')"]`);
     const icon = btn.querySelector('i');
+
     if(result.added){
       icon.classList.remove('fa-solid');
       icon.classList.add('fa-regular');
@@ -153,4 +154,8 @@
       icon.classList.add('fa-solid');
     }
    }
+   catch(error){
+     window.location.href= "/login";
+   }
+  }
 </script>

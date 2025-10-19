@@ -25,6 +25,7 @@ const user = require("./mondels/user.js");
 const ListingRoute = require("./routes/listing.js");
 const ReviewRoute = require("./routes/review.js");
 const UserRoute = require("./routes/user.js");
+const wishListRoute = require("./routes/wishList.js");
 const { number } = require("joi");
 const { error } = require("console");
 
@@ -102,6 +103,7 @@ app.use((req,res,next)=>{
 app.use("/listing",ListingRoute);
 app.use("/listing/:id/review",ReviewRoute);
 app.use("/",UserRoute);
+app.use("/listing",wishListRoute);
 
 // error handeling...
 app.use((err,req,res,next)=>{
