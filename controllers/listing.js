@@ -1,8 +1,24 @@
 const listing= require("../mondels/listing.js");
+const user = require("../mondels/user.js")
 
 module.exports.index =  async (req,res)=>{
-  let allListings = await listing.find();
-  res.render("./listing/index.ejs",{allListings});
+  try{
+    const allListings = await listing.find();
+    let wishListIds =[];
+  
+    if( req.user){
+      const userId = user.findById(req.user._id).populate('wishList');
+      if(user && user.wishList){
+        wishListIds = userId.wishList.map(item=>item._id.toString());
+      }
+      
+    }
+    res.render("./listing/index.ejs",{allListings,wishListIds});
+  }
+  catch(error){
+   res.status(500).send("Something went wrong while loading listings");
+  }
+ 
 }
 
 module.exports.searchListings = async(req,res)=>{
@@ -89,6 +105,7 @@ module.exports.showIdListing =async (req,res)=>{
   }
 
 }
+
 
 module.exports.updateListingForm = async(req,res)=>{
   let {id} = req.params;

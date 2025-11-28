@@ -50,9 +50,13 @@ module.exports.loginForm = (req,res)=>{
 }
 
 module.exports.loginDone = async(req,res)=>{
+
   req.flash("success","Welcome back to WanderLast");
-  let redirectUrl= res.locals.redirectUrl || "/listing";
+  let redirectUrl= res.locals.redirectUrl ||  "/listing";
+  console.log("in post login");
+console.log(redirectUrl);
   res.redirect(redirectUrl);
+
 }
 
 module.exports.logOut = (req,res)=>{
