@@ -41,15 +41,15 @@ const db_url = process.env.ATL_URL;
 
 
 
-// main()
-// .then(()=>{console.log("connection successful!!");})
-// .catch((err)=>{console.log(err);})
+main()
+.then(()=>{console.log("connection successful!!");})
+.catch((err)=>{console.log(err);})
 
-//   async function main(params) {
-//     await mongoose.connect("mongodb://127.0.0.1:27017/wonder");
+  async function main() {
+    await mongoose.connect(db_url);
 
   
-// }
+}
 const store = MongoStore.create({
   mongoUrl: db_url,
   crypto:{
@@ -90,7 +90,6 @@ app.use((req,res,next)=>{
   next();
 })
 
-
 // app.get("/demo",async (req,res)=>{
 //   let fakeUser = new user({
 //     email:"fakeuser@gmail.com",
@@ -112,6 +111,8 @@ app.use((err,req,res,next)=>{
  //  res.status(status).send(message);
 
 })
+
+
 
 
 app.listen(3000,()=>{
