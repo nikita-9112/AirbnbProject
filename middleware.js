@@ -33,12 +33,15 @@ const validateReview = (req,res,next)=>{
 
 // const passport = require("passport");
 const isloggedIn = (req,res,next)=>{
-  // console.log(req.path," ",req.originalUrl);
+ console.log("hee");
   if( !req.isAuthenticated()){
     req.session.redirectUrl = req.originalUrl;
+    console.log("hee2");
     req.flash("error","You must logged in beform creating a listing");
+  
     return  res.redirect("/login");
   }
+  console.log("hee3");
   next();
 }
 

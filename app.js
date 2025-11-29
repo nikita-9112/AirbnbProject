@@ -38,11 +38,12 @@ app.use(express.static(path.join(__dirname,"public")));
 
 // dataBase initialisation
 const db_url = process.env.ATL_URL;
+const mongo_url = process.env.mongo_url;
 
 
 
 main()
-.then(()=>{console.log("connection successful!!");})
+.then(()=>{console.log(`connection successful!!`);})
 .catch((err)=>{console.log(err);})
 
   async function main() {
@@ -87,6 +88,7 @@ app.use((req,res,next)=>{
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.currentUser = req.user;
+ 
   next();
 })
 

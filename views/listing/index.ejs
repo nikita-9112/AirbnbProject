@@ -140,15 +140,16 @@
     async function toggleFA(btn,listingId,event){
       event.preventDefault();
       event.stopPropagation();
-     console.log("clicked");
+   
 
     const response= await fetch(`/listing/wishlist/${listingId}`,{method:"post"});
     console.log(response)
-    
+ 
     let result ;
     try{
-      result =  response.json(); // it give use that listing is added or removed.
-
+      result =  await response.json(); // it give use that listing is added or removed.
+  
+      
     // const button = document.querySelector(`[onclick="toggleFA('${listingId}')"]`);
     const icon = btn.querySelector('i');
 

@@ -63,6 +63,7 @@ module.exports.searchListings = async(req,res)=>{
 }
 
 module.exports.newListingForm = (req,res)=>{
+  console.log(res);
   res.render("./listing/new.ejs");
 }
 
